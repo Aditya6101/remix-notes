@@ -7,6 +7,8 @@ import { verifyLogin } from "~/models/user.server";
 import { createUserSession, getUserId } from "~/session.server";
 import { safeRedirect, validateEmail } from "~/utils";
 
+import { Button, Checkbox, TextField } from "@radix-ui/themes";
+
 export const loader = async ({ request }: LoaderArgs) => {
   const userId = await getUserId(request);
   if (userId) return redirect("/");
@@ -76,7 +78,7 @@ export default function LoginPage() {
   }, [actionData]);
 
   return (
-    <div className="flex min-h-full flex-col justify-center">
+    <div className="flex h-screen flex-col items-center justify-center">
       <div className="mx-auto w-full max-w-md px-8">
         <Form method="post" className="space-y-6">
           <div>
@@ -87,7 +89,7 @@ export default function LoginPage() {
               Email address
             </label>
             <div className="mt-1">
-              <input
+              <TextField.Input
                 ref={emailRef}
                 id="email"
                 required
@@ -115,7 +117,7 @@ export default function LoginPage() {
               Password
             </label>
             <div className="mt-1">
-              <input
+              <TextField.Input
                 id="password"
                 ref={passwordRef}
                 name="password"
@@ -134,18 +136,14 @@ export default function LoginPage() {
           </div>
 
           <input type="hidden" name="redirectTo" value={redirectTo} />
-          <button
-            type="submit"
-            className="w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
-          >
+          <Button type="submit" className="w-full px-4 py-2">
             Log in
-          </button>
+          </Button>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <input
+              <Checkbox
                 id="remember"
                 name="remember"
-                type="checkbox"
                 className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               />
               <label
