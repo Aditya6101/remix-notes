@@ -3,7 +3,7 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
+    "build": "prisma generate && remix build",
     "dev": "remix dev -c \"npm run dev:serve\"",
     "dev:serve": "binode --require ./mocks -- @remix-run/serve:remix-serve ./build",
     "format": "prettier --write .",
