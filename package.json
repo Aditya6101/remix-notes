@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "@prisma/client": "^4.16.1",
+    "@radix-ui/themes": "^1.0.0",
     "@remix-run/css-bundle": "^1.19.3",
     "@remix-run/node": "^1.19.3",
     "@remix-run/react": "^1.19.3",
