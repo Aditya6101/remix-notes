@@ -164,7 +164,7 @@ export default function NoteDetailsPage() {
           type="submit"
           name="_action"
           value="delete"
-          className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
+          className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600 focus:bg-blue-400"
         >
           Delete
         </button>
