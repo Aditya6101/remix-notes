@@ -78,12 +78,12 @@ const editAction = async ({ params, request }: ActionArgs) => {
 export default function NoteDetailsPage() {
   const data = useLoaderData<typeof loader>();
 
-  const actionData = useActionData<typeof action>();
+  const actionData = useActionData<typeof editAction>();
   const titleRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    if (action?.errors?.title) {
+    if (actionData?.errors?.title) {
       titleRef.current?.focus();
     } else if (actionData?.errors?.body) {
       bodyRef.current?.focus();
