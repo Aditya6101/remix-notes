@@ -1,3 +1,5 @@
+import { TrashIcon } from "@radix-ui/react-icons";
+import { Button } from "@radix-ui/themes";
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import {
@@ -40,12 +42,9 @@ export default function NoteDetailsPage() {
       <p className="py-6">{data.note.body}</p>
       <hr className="my-4" />
       <Form method="post">
-        <button
-          type="submit"
-          className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
-        >
-          Delete
-        </button>
+        <Button type="submit">
+          <TrashIcon width="16" height="16" /> Delete
+        </Button>
       </Form>
     </div>
   );
