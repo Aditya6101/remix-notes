@@ -1,4 +1,4 @@
-import { TextArea, TextField } from "@radix-ui/themes";
+import { Button, TextArea, TextField } from "@radix-ui/themes";
 import type { ActionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
@@ -67,7 +67,6 @@ export default function NewNotePage() {
           </div>
         ) : null}
       </div>
-
       <div>
         <TextArea
           ref={bodyRef}
@@ -87,14 +86,7 @@ export default function NewNotePage() {
         ) : null}
       </div>
 
-      <div className="text-right">
-        <button
-          type="submit"
-          className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
-        >
-          Save
-        </button>
-      </div>
+      <Button type="submit">Save</Button>
     </Form>
   );
 }

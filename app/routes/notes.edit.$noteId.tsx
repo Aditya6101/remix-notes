@@ -1,3 +1,4 @@
+import { Button, TextArea, TextField } from "@radix-ui/themes";
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import {
@@ -93,29 +94,19 @@ export default function NoteDetailsPage() {
   return (
     <div>
       <h3 className="text-2xl font-bold">Edit - {data.note.title}</h3>
-      <Form
-        method="post"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 8,
-          width: "100%",
-        }}
-      >
+      <Form method="post" className="mt-4 flex w-1/2 flex-col gap-4">
         <div>
-          <label className="flex w-full flex-col gap-1">
-            <span>Title: </span>
-            <input
-              ref={titleRef}
-              name="title"
-              defaultValue={data.note.title}
-              className="flex-1 rounded-md border-2 border-blue-500 px-3 text-lg leading-loose"
-              aria-invalid={actionData?.errors?.title ? true : undefined}
-              aria-errormessage={
-                actionData?.errors?.title ? "title-error" : undefined
-              }
-            />
-          </label>
+          <TextField.Input
+            ref={titleRef}
+            name="title"
+            defaultValue={data.note.title}
+            className="flex-1 rounded-md border-2 border-blue-500 px-3 text-lg leading-loose"
+            aria-invalid={actionData?.errors?.title ? true : undefined}
+            aria-errormessage={
+              actionData?.errors?.title ? "title-error" : undefined
+            }
+          />
+
           {actionData?.errors?.title ? (
             <div className="pt-1 text-red-700" id="title-error">
               {actionData.errors.title}
@@ -124,20 +115,18 @@ export default function NoteDetailsPage() {
         </div>
 
         <div>
-          <label className="flex w-full flex-col gap-1">
-            <span>Body: </span>
-            <textarea
-              ref={bodyRef}
-              name="body"
-              rows={8}
-              defaultValue={data.note.body}
-              className="w-full flex-1 rounded-md border-2 border-blue-500 px-3 py-2 text-lg leading-6"
-              aria-invalid={actionData?.errors?.body ? true : undefined}
-              aria-errormessage={
-                actionData?.errors?.body ? "body-error" : undefined
-              }
-            />
-          </label>
+          <TextArea
+            ref={bodyRef}
+            name="body"
+            rows={8}
+            defaultValue={data.note.body}
+            className="w-full flex-1 rounded-md border-2 border-blue-500 px-3 py-2 text-lg leading-6"
+            aria-invalid={actionData?.errors?.body ? true : undefined}
+            aria-errormessage={
+              actionData?.errors?.body ? "body-error" : undefined
+            }
+          />
+
           {actionData?.errors?.body ? (
             <div className="pt-1 text-red-700" id="body-error">
               {actionData.errors.body}
@@ -145,29 +134,24 @@ export default function NoteDetailsPage() {
           ) : null}
         </div>
 
-        <div className="text-right">
-          <button
-            type="submit"
-            name="_action"
-            value="update"
-            className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
-          >
-            Save
-          </button>
-        </div>
+        <Button type="submit" name="_action" value="update">
+          Save
+        </Button>
       </Form>
 
       <hr className="my-4" />
 
       <Form method="post">
-        <button
+        <Button
+          variant="soft"
+          color="red"
           type="submit"
           name="_action"
           value="delete"
-          className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600 focus:bg-blue-400"
+          className="max-w-fit"
         >
           Delete
-        </button>
+        </Button>
       </Form>
     </div>
   );

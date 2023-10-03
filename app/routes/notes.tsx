@@ -47,7 +47,7 @@ export default function NotesPage() {
         </h1>
         <p>{user.email}</p>
         <Form action="/logout" method="post">
-          <Button type="submit">
+          <Button type="submit" variant="soft">
             <ExitIcon width="16" height="16" /> Logout
           </Button>
         </Form>
@@ -81,19 +81,19 @@ export default function NotesPage() {
                     to={note.id}
                   >
                     {note.title}
-                    <div className="flex items-center gap-2">
-                      <Link to={`edit/${note.id}`}>
-                        <IconButton>
+                    <div className="flex items-center justify-center gap-3">
+                      <IconButton variant="ghost">
+                        <Link to={`edit/${note.id}`}>
                           <Pencil2Icon width="16" height="16" />
-                        </IconButton>
-                      </Link>
+                        </Link>
+                      </IconButton>
 
-                      <Form method="post">
-                        <input type="hidden" value={note.id} name="id" />
-                        <IconButton>
+                      <IconButton variant="ghost">
+                        <Form method="post">
+                          <input type="hidden" value={note.id} name="id" />
                           <TrashIcon width="16" height="16" />
-                        </IconButton>
-                      </Form>
+                        </Form>
+                      </IconButton>
                     </div>
                   </NavLink>
                 </li>
