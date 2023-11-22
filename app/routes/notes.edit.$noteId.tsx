@@ -94,7 +94,10 @@ export default function NoteDetailsPage() {
   return (
     <div>
       <h3 className="text-2xl font-bold">Edit - {data.note.title}</h3>
-      <Form method="post" className="mt-4 flex w-1/2 flex-col gap-4">
+      <Form
+        method="post"
+        className="mx-auto flex w-1/2 flex-col gap-4 rounded-md border border-neutral-100 p-6 shadow-sm"
+      >
         <div>
           <TextField.Input
             ref={titleRef}
@@ -137,21 +140,19 @@ export default function NoteDetailsPage() {
         <Button type="submit" name="_action" value="update">
           Save
         </Button>
-      </Form>
 
-      <hr className="my-4" />
-
-      <Form method="post">
-        <Button
-          variant="soft"
-          color="red"
-          type="submit"
-          name="_action"
-          value="delete"
-          className="max-w-fit"
-        >
-          Delete
-        </Button>
+        <Form method="post">
+          <Button
+            variant="soft"
+            color="red"
+            type="submit"
+            name="_action"
+            value="delete"
+            className="w-full"
+          >
+            Delete
+          </Button>
+        </Form>
       </Form>
     </div>
   );

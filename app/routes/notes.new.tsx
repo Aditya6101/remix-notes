@@ -48,7 +48,11 @@ export default function NewNotePage() {
   }, [actionData]);
 
   return (
-    <Form ref={formRef} method="post" className="flex w-1/2 flex-col gap-4">
+    <Form
+      ref={formRef}
+      method="post"
+      className="mx-auto flex w-1/2 flex-col gap-4 rounded-md bg-neutral-100 p-8 shadow-sm"
+    >
       <div>
         <TextField.Input
           placeholder="Enter your email"
