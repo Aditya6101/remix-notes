@@ -74,9 +74,9 @@ export default function NotesPage() {
                 <li key={note.id} className="px-2 py-1">
                   <NavLink
                     className={({ isActive }) =>
-                      `flex w-full items-center justify-between rounded-lg bg-white p-2 text-base ${
+                      `flex w-full items-center justify-between rounded-md bg-white p-2 text-base ${
                         isActive
-                          ? "border border-blue-400 bg-white shadow-md"
+                          ? "border border-blue-400 bg-white shadow-sm"
                           : ""
                       }`
                     }
