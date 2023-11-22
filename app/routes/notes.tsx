@@ -1,4 +1,4 @@
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, Link, NavLink, Outlet, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
@@ -9,6 +9,8 @@ import { useUser } from "~/utils";
 
 import { ExitIcon, Pencil2Icon, TrashIcon } from "@radix-ui/react-icons";
 import { Button, IconButton } from "@radix-ui/themes";
+
+export const meta: V2_MetaFunction = () => [{ title: "Remix Notes" }];
 
 export const loader = async ({ request }: LoaderArgs) => {
   const userId = await requireUserId(request);
