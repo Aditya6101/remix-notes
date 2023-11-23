@@ -11,7 +11,6 @@ import {
 } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 import invariant from "tiny-invariant";
-import { delay } from "utils";
 
 import { deleteNote, editNote, getNote } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
@@ -30,8 +29,6 @@ export const loader = async ({ params, request }: LoaderArgs) => {
 export const action = async (args: ActionArgs) => {
   const formData = await args.request.clone().formData();
   const intent = formData.get("intent");
-
-  await delay(3000);
 
   switch (intent) {
     case "update":

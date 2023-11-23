@@ -7,8 +7,8 @@ import { deleteNote, getNoteListItems } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
 import { useUser } from "~/utils";
 
-import { ExitIcon, Pencil2Icon, TrashIcon } from "@radix-ui/react-icons";
-import { Button, IconButton } from "@radix-ui/themes";
+import { ExitIcon } from "@radix-ui/react-icons";
+import { Button } from "@radix-ui/themes";
 
 export const meta: V2_MetaFunction = () => [{ title: "Remix Notes" }];
 
@@ -83,20 +83,12 @@ export default function NotesPage() {
                     to={note.id}
                   >
                     {note.title}
-                    <div className="flex items-center justify-center gap-3">
-                      <IconButton variant="ghost">
-                        <Link to={`edit/${note.id}`}>
-                          <Pencil2Icon width="16" height="16" />
-                        </Link>
-                      </IconButton>
-
-                      <IconButton variant="ghost">
-                        <Form method="post">
-                          <input type="hidden" value={note.id} name="id" />
-                          <TrashIcon width="16" height="16" />
-                        </Form>
-                      </IconButton>
-                    </div>
+                    <Link
+                      to={`edit/${note.id}`}
+                      className="text-sm font-normal text-blue-400"
+                    >
+                      Edit
+                    </Link>
                   </NavLink>
                 </li>
               ))}

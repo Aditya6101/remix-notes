@@ -3,7 +3,6 @@ import type { ActionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, useActionData, useNavigation } from "@remix-run/react";
 import { useEffect, useRef } from "react";
-import { delay } from "utils";
 
 import { createNote } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
@@ -28,8 +27,6 @@ export const action = async ({ request }: ActionArgs) => {
       { status: 400 }
     );
   }
-
-  await delay(3000);
 
   const note = await createNote({ body, title, userId });
 
