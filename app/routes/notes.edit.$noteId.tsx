@@ -98,11 +98,13 @@ export default function NoteDetailsPage() {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold">Edit - {data.note.title}</h3>
       <Form method="post" className="mx-auto w-1/2 rounded-md bg-neutral-100">
+        <h3 className="px-8 pt-4 text-lg font-semibold text-neutral-900">
+          Edit - {data.note.title}
+        </h3>
         <fieldset
           disabled={isUpdating}
-          className="mx-auto flex w-full flex-col gap-4 rounded-md bg-neutral-100 p-8 shadow-sm"
+          className="mx-auto flex w-full flex-col gap-4 rounded-md bg-neutral-100 p-8 py-4 shadow-sm"
         >
           <div>
             <TextField.Input
@@ -134,6 +136,14 @@ export default function NoteDetailsPage() {
               aria-errormessage={
                 actionData?.errors?.body ? "body-error" : undefined
               }
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  e.currentTarget.form?.dispatchEvent(
+                    new Event("submit", { bubbles: true, cancelable: true })
+                  );
+                }
+              }}
             />
 
             {actionData?.errors?.body ? (
