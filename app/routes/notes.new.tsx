@@ -1,8 +1,7 @@
-import { Button, TextArea, TextField } from "@radix-ui/themes";
 import type { ActionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import { Form, useActionData, useNavigation } from "@remix-run/react";
-import { useEffect, useRef } from "react";
+import { useActionData } from "@remix-run/react";
+import NoteForm from "~/components/NoteForm";
 
 import { createNote } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
@@ -35,24 +34,11 @@ export const action = async ({ request }: ActionArgs) => {
 
 export default function NewNotePage() {
   const actionData = useActionData<typeof action>();
-  const titleRef = useRef<HTMLInputElement>(null);
-  const bodyRef = useRef<HTMLTextAreaElement>(null);
-  const formRef = useRef(null);
-
-  const navigation = useNavigation();
-  const isCreating = navigation.formData?.get("intent") === "create";
-
-  useEffect(() => {
-    if (actionData?.errors?.title) {
-      titleRef.current?.focus();
-    } else if (actionData?.errors?.body) {
-      bodyRef.current?.focus();
-    }
-  }, [actionData]);
 
   return (
     <div>
-      <Form
+      <NoteForm actionData={actionData} />
+      {/* <Form
         ref={formRef}
         method="post"
         className="mx-auto w-1/2 rounded-md bg-neutral-100"
@@ -132,7 +118,7 @@ export default function NewNotePage() {
             )}
           </Button>
         </fieldset>
-      </Form>
+      </Form> */}
     </div>
   );
 }
