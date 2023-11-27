@@ -9,13 +9,16 @@ type Note = {
   title: string;
 };
 
-type Errors = Omit<Note, "id">;
+type ActionData =
+  | { errors: { body: null; title: string } }
+  | { errors: { body: string; title: null } }
+  | undefined;
 
 const NoteForm = ({
   actionData,
   notesData,
 }: {
-  actionData: { errors: Errors };
+  actionData: ActionData;
   notesData?: { note: Note };
 }) => {
   const formRef = useRef(null);
