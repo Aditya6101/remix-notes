@@ -66,14 +66,14 @@ const NoteForm = ({
             name="body"
             ref={bodyRef}
             placeholder="Start writing here..."
-            defaultValue={notesData ? notesData.note.title : ""}
+            defaultValue={notesData ? notesData.note.body : ""}
             rows={8}
             aria-invalid={actionData?.errors?.body ? true : undefined}
             aria-errormessage={
               actionData?.errors?.body ? "body-error" : undefined
             }
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
+              if (e.key === "Enter" && e.ctrlKey) {
                 e.preventDefault();
                 e.currentTarget.form?.dispatchEvent(
                   new Event("submit", { bubbles: true, cancelable: true })
