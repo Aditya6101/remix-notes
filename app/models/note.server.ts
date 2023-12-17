@@ -9,7 +9,7 @@ export function getNote({
   userId: User["id"];
 }) {
   return prisma.note.findFirst({
-    select: { id: true, body: true, title: true },
+    select: { id: true, body: true, title: true, updatedAt: true },
     where: { id, userId },
   });
 }
