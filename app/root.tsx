@@ -33,7 +33,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
+      <body className="h-full antialiased">
         <Theme accentColor="blue" grayColor="sand" radius="large" scaling="95%">
           <Outlet />
           <ScrollRestoration />
